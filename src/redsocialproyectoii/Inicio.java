@@ -33,6 +33,11 @@ public class Inicio extends javax.swing.JFrame {
         logBtn.setText("Log In");
 
         signBtn.setText("Sign In");
+        signBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signBtnActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Pantalla de Inicio");
 
@@ -102,6 +107,14 @@ public class Inicio extends javax.swing.JFrame {
     private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUserActionPerformed
+
+    private void signBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signBtnActionPerformed
+        
+        SignIn sign = new SignIn();
+        sign.setVisible(true);
+        sign.setLocationRelativeTo(null);
+        
+    }//GEN-LAST:event_signBtnActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
