@@ -1,9 +1,28 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package redsocialproyectoii;
 
-public class Usuario {
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
+public class Usuario {
+    
+    JTextField user;
+    JPasswordField pass;
+    
+    Usuario(JTextField usuario, JPasswordField contra){
+        this.user=usuario;
+        this.pass=contra;
+    }
+    
+    void setUser(JTextField usuario){
+        this.user=usuario;
+    }
+    void setPasword(JPasswordField contra){
+        this.pass=contra;
+    }
+    JTextField getUser(){
+        return this.user;
+    }
+    JPasswordField getPassword(){
+        return this.pass;
+    }
 }
