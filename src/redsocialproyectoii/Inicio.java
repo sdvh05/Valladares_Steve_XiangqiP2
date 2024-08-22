@@ -4,10 +4,15 @@
  */
 package redsocialproyectoii;
 
-public class Inicio extends javax.swing.JFrame {
+import javax.swing.JOptionPane;
 
+public class Inicio extends javax.swing.JFrame {
+   // este verificara si existe dicho user
+    AdminUsuarios Usuarios;
     public Inicio() {
         initComponents();
+
+        Usuarios=new AdminUsuarios();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -31,6 +36,11 @@ public class Inicio extends javax.swing.JFrame {
         });
 
         logBtn.setText("Log In");
+        logBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logBtnActionPerformed(evt);
+            }
+        });
 
         signBtn.setText("Sign In");
         signBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -105,16 +115,18 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtUserActionPerformed
 
     private void signBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signBtnActionPerformed
-        
-        SignIn sign = new SignIn();
-        sign.setVisible(true);
-        sign.setLocationRelativeTo(null);
+        new SignIn(this).setVisible(true);
+        this.dispose();
         
     }//GEN-LAST:event_signBtnActionPerformed
+
+    private void logBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logBtnActionPerformed
+        
+    }//GEN-LAST:event_logBtnActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -143,7 +155,9 @@ public class Inicio extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Inicio().setVisible(true);
+                Inicio in=new Inicio();
+                in.setVisible(true);
+                in.setLocationRelativeTo(null);
             }
         });
     }

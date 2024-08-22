@@ -1,28 +1,30 @@
 package redsocialproyectoii;
-
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-
 public class Usuario {
+    private String nombre;
+    private String user;
+    private String pass;
+    private String Genero;
+    private int edad;
+//    private boolean estado=false;
     
-    JTextField user;
-    JPasswordField pass;
-    
-    Usuario(JTextField usuario, JPasswordField contra){
+    public Usuario(String usuario, String contra,String genero,int edad){
         this.user=usuario;
-        this.pass=contra;
+        this.pass=contra;    
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
     }
     
-    void setUser(JTextField usuario){
-        this.user=usuario;
-    }
-    void setPasword(JPasswordField contra){
-        this.pass=contra;
-    }
-    JTextField getUser(){
-        return this.user;
-    }
-    JPasswordField getPassword(){
-        return this.pass;
-    }
 }
