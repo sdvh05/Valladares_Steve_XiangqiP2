@@ -17,19 +17,19 @@ public class AdminUsuarios {
 //    }
 
     Usuario BuscarUsuario(String nombre) {
-        for (Usuario ubicacion : Admin) {
-            if (ubicacion != null && ubicacion.getUser().equals(nombre)) {
-                return ubicacion;
+        for (Usuario myArrays : Admin) {
+            if (myArrays != null && myArrays.getUser().equals(nombre)) {
+                return myArrays;
             }
         }
         return null;
     }
 
-    boolean AgregarUsuario(String nombre, String password,String genero,int edad) {
+    boolean AgregarUsuario(String name, String nombre, String password,String genero,int edad) {
         if (BuscarUsuario(nombre) == null) {
             for (int i = 0; i < Admin.length; i++) {
                 if (Admin[i] == null) {
-                    Admin[i] = new Usuario(nombre, password,genero,edad);
+                    Admin[i] = new Usuario(name, nombre, password,genero,edad);
                     return true;
                 }
             }

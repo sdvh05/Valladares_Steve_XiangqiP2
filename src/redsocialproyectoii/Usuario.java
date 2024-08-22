@@ -7,7 +7,7 @@ public class Usuario {
     private int edad;
 //    private boolean estado=false;
     
-    public Usuario(String usuario, String contra,String genero,int edad){
+    public Usuario(String nombre, String usuario, String contra,String genero,int edad){
         this.user=usuario;
         this.pass=contra;    
     }
