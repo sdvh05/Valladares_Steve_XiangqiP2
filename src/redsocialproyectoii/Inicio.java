@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 
 public class Inicio extends javax.swing.JFrame {
    // este verificara si existe dicho user
+    
     AdminUsuarios Usuarios;
     public Inicio() {
         initComponents();
@@ -121,11 +122,25 @@ public class Inicio extends javax.swing.JFrame {
     private void signBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signBtnActionPerformed
         new SignIn(this).setVisible(true);
         this.dispose();
-        
     }//GEN-LAST:event_signBtnActionPerformed
 
     private void logBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logBtnActionPerformed
+        String name=txtUser.getText();
+        String password=txtPass.getText();
         
+        if(txtUser.getText().isEmpty()||txtPass.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Cuidado con las casillas");
+        }else{
+            for (int i = 0; i < Usuarios.Admin.length; i++) {
+                if (Usuarios.Admin.equals(txtUser.getText())) {
+                    this.dispose();
+                    new Navegacion().setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Usuario no valido!", "Error", HEIGHT);
+                }
+                break;
+            }
+        }
     }//GEN-LAST:event_logBtnActionPerformed
 
     public static void main(String args[]) {

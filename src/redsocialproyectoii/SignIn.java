@@ -17,11 +17,6 @@ public class SignIn extends javax.swing.JFrame {
     public SignIn(Inicio InstanciaPorParametro) {
         initComponents();
         this.InstanciaMain=InstanciaPorParametro;
-        //poner limite en el spinner
-        SpinnerNumberModel n=new SpinnerNumberModel();
-        n.setMinimum(18);
-        n.setMaximum(99);
-        jSpinner1.setModel(n);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -36,7 +31,7 @@ public class SignIn extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         txtPassword = new javax.swing.JPasswordField();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jSpinner1 = new javax.swing.JSpinner();
+        edadSpin = new javax.swing.JSpinner();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
@@ -96,7 +91,7 @@ public class SignIn extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(registerBtn)
                                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(edadSpin, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
@@ -135,7 +130,7 @@ public class SignIn extends javax.swing.JFrame {
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(edadSpin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addComponent(registerBtn)
@@ -157,22 +152,24 @@ public class SignIn extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
+       
        String name= txtNombre.getText();
-        String nombre = txtName.getText();
+       String nombre = txtName.getText();
        
        String password = txtPassword.getText();
        String genero=jComboBox1.getSelectedItem().toString();
-       int edad=Integer.parseInt(jSpinner1.getValue().toString());
+       int edad=Integer.parseInt(edadSpin.getValue().toString());
        
-       if(name==null||nombre==null||password==null||genero==null){
-           JOptionPane.showMessageDialog(null,"No has llenado todas las casillas");
-       }else{
-            if(InstanciaMain.Usuarios.AgregarUsuario(name, nombre, password,genero,edad)){
+        if (name.isEmpty() || nombre.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No has llenado todas las casillas");
+        } else {
+            if (InstanciaMain.Usuarios.AgregarUsuario(name, nombre, password, genero, edad)) {
+                this.dispose();
                 new Navegacion().setVisible(true);
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Usuario no valido!", "Error", HEIGHT);
             }
-       }
+        }
 //        InstanciaMain.Usuarios.Print();
         
     }//GEN-LAST:event_registerBtnActionPerformed
@@ -183,6 +180,7 @@ public class SignIn extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSpinner edadSpin;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
@@ -192,7 +190,6 @@ public class SignIn extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JButton registerBtn;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtNombre;

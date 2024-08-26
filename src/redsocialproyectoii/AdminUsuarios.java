@@ -7,24 +7,13 @@ public class AdminUsuarios {
     public AdminUsuarios() {
         Admin = new Usuario[100];
     }
-//
 //    void Print() {
-//        for (Usuario Admin1 : Admin) {
-//            if (Admin1 != null) {
-//                System.out.println(Admin1.getUser());
+//        for (Usuario i : Admin) {
+//            if (i != null) {
+//                System.out.println(i.getUser());
 //            }
 //        }
 //    }
-
-    Usuario BuscarUsuario(String nombre) {
-        for (Usuario myArrays : Admin) {
-            if (myArrays != null && myArrays.getUser().equals(nombre)) {
-                return myArrays;
-            }
-        }
-        return null;
-    }
-
     boolean AgregarUsuario(String name, String nombre, String password,String genero,int edad) {
         if (BuscarUsuario(nombre) == null) {
             for (int i = 0; i < Admin.length; i++) {
@@ -34,8 +23,15 @@ public class AdminUsuarios {
                 }
             }
         }
-
         return false;
     }
 
+    Usuario BuscarUsuario(String nombre) {
+        for (Usuario myArrays : Admin) {
+            if (myArrays != null && myArrays.getUser().equals(nombre)) {
+                return myArrays;
+            }
+        }
+        return null;
+    }
 }
