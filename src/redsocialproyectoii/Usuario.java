@@ -1,15 +1,18 @@
 package redsocialproyectoii;
 public class Usuario {
-    private String nombre;
-    private String user;
+    public String nombre;
+    public String user;
     private String pass;
-    private String Genero;
-    private int edad;
+    public String Genero;
+    public int edad;
 //    private boolean estado=false;
     
     public Usuario(String nombre, String usuario, String contra,String genero,int edad){
+        this.nombre=nombre;
         this.user=usuario;
-        this.pass=contra;    
+        this.pass=contra;
+        this.Genero=genero;
+        this.edad=edad;
     }
 
     public String getUser() {

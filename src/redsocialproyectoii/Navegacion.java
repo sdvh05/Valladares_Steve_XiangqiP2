@@ -9,14 +9,29 @@ package redsocialproyectoii;
  * @author user
  */
 public class Navegacion extends javax.swing.JFrame {
+    private static Navegacion instanciaUnica;
 
-    /**
-     * Creates new form Navegacion
-     */
-    public Navegacion() {
+    private String navegacionGeneral;
+
+    private Navegacion() {
+        navegacionGeneral="Navegacion dentro";
         initComponents();
     }
+    
+    public static Navegacion getInstancia() {
+        if (instanciaUnica == null) {
+            instanciaUnica = new Navegacion();
+        }
+        return instanciaUnica;
+    }
+    
+    public String getNavegacionGeneral() {
+        return navegacionGeneral;
+    }
 
+    public void setNavegacionGeneral(String configuracionGeneral) {
+        this.navegacionGeneral = configuracionGeneral;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -84,9 +99,9 @@ public class Navegacion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Inicio in=new Inicio();
-        in.setVisible(true);
-        in.setLocationRelativeTo(null);
+        Inicio inc= Inicio.getInstance();
+        inc.setVisible(true);
+        inc.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

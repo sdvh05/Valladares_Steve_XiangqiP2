@@ -12,7 +12,6 @@ public class SignIn extends javax.swing.JFrame {
     private boolean estado=false;
     //Inicio es el que contiene el arreglo
     Inicio InstanciaMain;
-    
     //le convertimos en constructor
     public SignIn(Inicio InstanciaPorParametro) {
         initComponents();
@@ -154,18 +153,19 @@ public class SignIn extends javax.swing.JFrame {
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
        
        String name= txtNombre.getText();
-       String nombre = txtName.getText();
+       String user = txtName.getText();
        
        String password = txtPassword.getText();
        String genero=jComboBox1.getSelectedItem().toString();
        int edad=Integer.parseInt(edadSpin.getValue().toString());
        
-        if (name.isEmpty() || nombre.isEmpty() || password.isEmpty()) {
+        if (name.isEmpty() || user.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(null, "No has llenado todas las casillas");
         } else {
-            if (InstanciaMain.Usuarios.AgregarUsuario(name, nombre, password, genero, edad)) {
+            if (InstanciaMain.Usuarios.AgregarUsuario(name, user, password, genero, edad)) {
+                Navegacion nav = Navegacion.getInstancia();
+                nav.setVisible(true);
                 this.dispose();
-                new Navegacion().setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario no valido!", "Error", HEIGHT);
             }

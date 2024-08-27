@@ -7,14 +7,21 @@ package redsocialproyectoii;
 import javax.swing.JOptionPane;
 
 public class Inicio extends javax.swing.JFrame {
-   // este verificara si existe dicho user
+    private static Inicio instanceOnly;
     
     AdminUsuarios Usuarios;
-    public Inicio() {
+    private Inicio() {
         initComponents();
 
         Usuarios=new AdminUsuarios();
     }
+    public static Inicio getInstance(){
+        if(instanceOnly == null){
+            instanceOnly = new Inicio();
+        }
+        return instanceOnly;
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -125,21 +132,20 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_signBtnActionPerformed
 
     private void logBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logBtnActionPerformed
-        String name=txtUser.getText();
+        String user=txtUser.getText();
         String password=txtPass.getText();
+        Usuario usr= Usuarios.BuscarUsuario(user);
         
         if(txtUser.getText().isEmpty()||txtPass.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Cuidado con las casillas");
         }else{
-            for (int i = 0; i < Usuarios.Admin.length; i++) {
-                if (Usuarios.Admin.equals(txtUser.getText())) {
+                if (usr!=null) {
+                    Navegacion nav = Navegacion.getInstancia();
+                    nav.setVisible(true);
                     this.dispose();
-                    new Navegacion().setVisible(true);
                 } else {
-                    JOptionPane.showMessageDialog(null, "Usuario no valido!", "Error", HEIGHT);
+                    JOptionPane.showMessageDialog(null, "No hay");
                 }
-                break;
-            }
         }
     }//GEN-LAST:event_logBtnActionPerformed
 
@@ -170,7 +176,7 @@ public class Inicio extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Inicio in=new Inicio();
+                Inicio in = Inicio.getInstance();
                 in.setVisible(true);
                 in.setLocationRelativeTo(null);
             }
