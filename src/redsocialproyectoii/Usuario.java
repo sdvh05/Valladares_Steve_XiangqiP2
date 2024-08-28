@@ -5,6 +5,7 @@ public class Usuario {
     private String pass;
     public String Genero;
     public int edad;
+    public boolean enLinea;
 //    private boolean estado=false;
     
     public Usuario(String nombre, String usuario, String contra,String genero,int edad){
@@ -13,6 +14,11 @@ public class Usuario {
         this.pass=contra;
         this.Genero=genero;
         this.edad=edad;
+        this.enLinea=false;
+    }
+
+    public boolean isEnLinea() {
+        return enLinea;
     }
 
     public String getUser() {

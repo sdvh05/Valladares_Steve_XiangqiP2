@@ -26,7 +26,7 @@ public class SignIn extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         registerBtn = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnGoback = new javax.swing.JButton();
         txtPassword = new javax.swing.JPasswordField();
         jComboBox1 = new javax.swing.JComboBox<>();
         edadSpin = new javax.swing.JSpinner();
@@ -35,7 +35,7 @@ public class SignIn extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         lblDate = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnDate = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,10 +52,10 @@ public class SignIn extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("<- Regresar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnGoback.setText("<- Regresar");
+        btnGoback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnGobackActionPerformed(evt);
             }
         });
 
@@ -69,10 +69,10 @@ public class SignIn extends javax.swing.JFrame {
 
         lblDate.setText("DD/MM/YY");
 
-        jButton1.setText("Generar Fecha");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnDate.setText("Generar Fecha");
+        btnDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnDateActionPerformed(evt);
             }
         });
 
@@ -84,7 +84,7 @@ public class SignIn extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton2)
+                        .addComponent(btnGoback)
                         .addGap(92, 92, 92)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -108,7 +108,7 @@ public class SignIn extends javax.swing.JFrame {
                                 .addComponent(jLabel3))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jButton1)))
+                                .addComponent(btnDate)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(registerBtn)
@@ -124,7 +124,7 @@ public class SignIn extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton2)))
+                        .addComponent(btnGoback)))
                 .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -148,7 +148,7 @@ public class SignIn extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(btnDate))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addComponent(registerBtn)
                 .addContainerGap())
@@ -181,8 +181,8 @@ public class SignIn extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No has llenado todas las casillas");
         } else {
             if (InstanciaMain.Usuarios.AgregarUsuario(name, user, password, genero, edad)) {
-                Navegacion nav = Navegacion.getInstancia();
-                nav.setVisible(true);
+                Inicio in = Inicio.getInstance();
+                in.setVisible(true);
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario no valido!", "Error", HEIGHT);
@@ -192,24 +192,24 @@ public class SignIn extends javax.swing.JFrame {
         
     }//GEN-LAST:event_registerBtnActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnGobackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGobackActionPerformed
         InstanciaMain.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnGobackActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDateActionPerformed
         Calendar cal= Calendar.getInstance();
         int dia=cal.get(Calendar.DATE);
         int mes= cal.get(Calendar.MONTH)+1;
         int anio= cal.get(Calendar.YEAR);
         
         lblDate.setText(dia+"/"+mes+"/"+anio);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnDateActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDate;
+    private javax.swing.JButton btnGoback;
     private javax.swing.JSpinner edadSpin;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
