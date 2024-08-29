@@ -6,7 +6,6 @@ package redsocialproyectoii;
 
 import java.util.Calendar;
 import javax.swing.JOptionPane;
-import javax.swing.SpinnerNumberModel;
 
 public class SignIn extends javax.swing.JFrame {
     //Inicio es el que contiene el arreglo
