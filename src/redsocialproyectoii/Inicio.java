@@ -134,12 +134,11 @@ public class Inicio extends javax.swing.JFrame {
     private void logBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logBtnActionPerformed
         String user=txtUser.getText();
         String password=txtPass.getText();
-        Usuario usr= Usuarios.BuscarUsuario(user);
         
         if(txtUser.getText().isEmpty()||txtPass.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Cuidado con las casillas");
         }else{
-                if (usr!=null) {
+                if (Usuarios.BuscarUsuario(user)!=null) {
                     Navegacion nav = Navegacion.getInstancia();
                     nav.setVisible(true);
                     this.dispose();

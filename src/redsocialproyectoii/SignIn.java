@@ -175,11 +175,12 @@ public class SignIn extends javax.swing.JFrame {
        String password = txtPassword.getText();
        String genero=jComboBox1.getSelectedItem().toString();
        int edad=Integer.parseInt(edadSpin.getValue().toString());
+       String fecha = lblDate.getText();
        
-        if (name.isEmpty() || user.isEmpty() || password.isEmpty()) {
+        if (name.isEmpty() || user.isEmpty() || password.isEmpty() || fecha.equals("DD/MM/YY")) {
             JOptionPane.showMessageDialog(null, "No has llenado todas las casillas");
         } else {
-            if (InstanciaMain.Usuarios.AgregarUsuario(name, user, password, genero, edad)) {
+            if (InstanciaMain.Usuarios.AgregarUsuario(name, user, password, genero, edad, fecha)) {
                 Inicio in = Inicio.getInstance();
                 in.setVisible(true);
                 this.dispose();
