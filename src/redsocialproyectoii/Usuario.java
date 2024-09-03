@@ -21,11 +21,15 @@ public class Usuario {
     public boolean isEnLinea() {
         return enLinea;
     }
-
-    public String getUser() {
+    
+    public void setUser(String user){
+        this.user=user;
+    }
+    
+    public String toString() {
         return user;
     }
-
+    
     public String getPass() {
         return pass;
     }

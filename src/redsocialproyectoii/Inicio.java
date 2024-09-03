@@ -7,15 +7,15 @@ package redsocialproyectoii;
 import javax.swing.JOptionPane;
 
 public class Inicio extends javax.swing.JFrame {
-    private static Inicio instanceOnly;
     
+    private static Inicio instanceOnly;
     AdminUsuarios Usuarios;
-    private Inicio() {
+    public Inicio() {
         initComponents();
 
         Usuarios=new AdminUsuarios();
     }
-    public static Inicio getInstance(){
+    public static Inicio getInstance() {
         if(instanceOnly == null){
             instanceOnly = new Inicio();
         }
@@ -147,7 +147,7 @@ public class Inicio extends javax.swing.JFrame {
                 }
         }
     }//GEN-LAST:event_logBtnActionPerformed
-
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

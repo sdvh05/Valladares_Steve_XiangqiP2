@@ -4,18 +4,25 @@
  */
 package redsocialproyectoii;
 
-import javax.swing.JTextField;
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class Navegacion extends javax.swing.JFrame {
-    
+    private String usuario;
+    //variable para reutillizar instancia
     private static Navegacion instanciaUnica;
-    //arreglo para JTexfield para desplazar lista luego
-    JTextField busqueda[]=new JTextField[1];
+    
+    Inicio in;
+    
     Tweets []twittear;
+    //arreglo para JTexfield para desplazar lista luego
+    AdminUsuarios busquedaLista = new AdminUsuarios();
     private Navegacion() {
         twittear = new Tweets[100];
-        busqueda[0]=txtBusqueda;
         initComponents();
+        busquedaLista.AgregarUsuario("Samuel", "samuel_lara", "feo", "Masculino", 18, "01-01-1999");
+        busquedaLista.AgregarUsuario("Alice", "alice123", "password", "Femenino", 25, "01-01-1999");
     }
     
     public static Navegacion getInstancia() {
@@ -25,6 +32,10 @@ public class Navegacion extends javax.swing.JFrame {
         return instanciaUnica;
     }
     
+    boolean comparar(){
+        
+        return false;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,88 +45,121 @@ public class Navegacion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel6 = new javax.swing.JPanel();
+        PanelType = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         areaTweet = new javax.swing.JTextArea();
         btnTwitt = new javax.swing.JButton();
-        jPanel7 = new javax.swing.JPanel();
+        lblNameUser = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        PanelBtn = new javax.swing.JPanel();
         btnInteract = new javax.swing.JButton();
         btnHashtags = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
         btnProfile = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        PanelSearch = new javax.swing.JPanel();
         txtBusqueda = new javax.swing.JTextField();
         listaUsers = new javax.swing.JComboBox<>();
         btnSearch = new javax.swing.JButton();
+        PanelPost = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        PanelType.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         areaTweet.setColumns(20);
         areaTweet.setRows(5);
+        areaTweet.setLineWrap(true);
+        areaTweet.setWrapStyleWord(true);
+        areaTweet.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                areaTweetKeyTyped(evt);
+            }
+        });
         jScrollPane1.setViewportView(areaTweet);
 
         btnTwitt.setText("Comentar");
+        btnTwitt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTwittActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        lblNameUser.setText("jLabel1");
+
+        jLabel1.setText("jLabel1");
+
+        javax.swing.GroupLayout PanelTypeLayout = new javax.swing.GroupLayout(PanelType);
+        PanelType.setLayout(PanelTypeLayout);
+        PanelTypeLayout.setHorizontalGroup(
+            PanelTypeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelTypeLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(PanelTypeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelTypeLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnTwitt))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)))
+                    .addGroup(PanelTypeLayout.createSequentialGroup()
+                        .addComponent(lblNameUser)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnTwitt)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        PanelTypeLayout.setVerticalGroup(
+            PanelTypeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelTypeLayout.createSequentialGroup()
+                .addComponent(lblNameUser)
+                .addGap(3, 3, 3)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(PanelTypeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelTypeLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btnTwitt))
+                    .addGroup(PanelTypeLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jLabel1)))
+                .addContainerGap())
         );
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        PanelBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         btnInteract.setText("Interacciones");
 
         btnHashtags.setText("Hashtags");
 
         btnClose.setText("Cerrar Sesion");
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
 
         btnProfile.setText("Mi Perfil");
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        javax.swing.GroupLayout PanelBtnLayout = new javax.swing.GroupLayout(PanelBtn);
+        PanelBtn.setLayout(PanelBtnLayout);
+        PanelBtnLayout.setHorizontalGroup(
+            PanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelBtnLayout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(PanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnClose, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnInteract, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(25, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelBtnLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addGroup(PanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelBtnLayout.createSequentialGroup()
                         .addComponent(btnProfile)
                         .addGap(42, 42, 42))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelBtnLayout.createSequentialGroup()
                         .addComponent(btnHashtags)
                         .addGap(38, 38, 38))))
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        PanelBtnLayout.setVerticalGroup(
+            PanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelBtnLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(btnProfile)
                 .addGap(103, 103, 103)
@@ -127,36 +171,52 @@ public class Navegacion extends javax.swing.JFrame {
                 .addGap(37, 37, 37))
         );
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        listaUsers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        PanelSearch.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         btnSearch.setText("🔍");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout PanelSearchLayout = new javax.swing.GroupLayout(PanelSearch);
+        PanelSearch.setLayout(PanelSearchLayout);
+        PanelSearchLayout.setHorizontalGroup(
+            PanelSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelSearchLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(PanelSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelSearchLayout.createSequentialGroup()
                         .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSearch))
                     .addComponent(listaUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        PanelSearchLayout.setVerticalGroup(
+            PanelSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelSearchLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(PanelSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearch))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(listaUsers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        PanelPost.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        javax.swing.GroupLayout PanelPostLayout = new javax.swing.GroupLayout(PanelPost);
+        PanelPost.setLayout(PanelPostLayout);
+        PanelPostLayout.setHorizontalGroup(
+            PanelPostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        PanelPostLayout.setVerticalGroup(
+            PanelPostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         setJMenuBar(jMenuBar1);
@@ -166,25 +226,79 @@ public class Navegacion extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(PanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(PanelType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PanelPost, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(PanelSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PanelSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PanelBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(PanelType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PanelPost, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void areaTweetKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_areaTweetKeyTyped
+        int caracteresDisponibles=140;
+        if (areaTweet.getText().length()>=caracteresDisponibles) {
+            evt.consume();
+            JOptionPane.showMessageDialog(areaTweet, "Solo se permite 140 caracteres. ");
+        }
+    }//GEN-LAST:event_areaTweetKeyTyped
 
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        listaUsers.removeAllItems();  // Limpiar el JComboBox antes de cada búsqueda
+    
+        String busqueda = txtBusqueda.getText().toLowerCase(); // Obtener el texto de búsqueda y convertir a minúsculas
+        System.out.println("Buscando: " + busqueda); // Imprime lo que estás buscando
+        for (Usuario Admin : busquedaLista.Admin) {
+            if (Admin != null) {
+                String nombreUsuario = Admin.toString().toLowerCase(); // Obtener el nombre del usuario y convertir a minúsculas
+                System.out.println("Comparando con: " + nombreUsuario); // Imprime el nombre del usuario
+                if (nombreUsuario.contains(busqueda)) {
+                    listaUsers.addItem(Admin.toString()); // Añadir el usuario al JComboBox si contiene la subcadena
+                }
+            }
+        }
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+        Inicio volver = new Inicio();
+        volver.setVisible(true);
+        volver.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnCloseActionPerformed
+
+    private void btnTwittActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTwittActionPerformed
+        String tweet = areaTweet.getText();
+        JLabel label = new JLabel(tweet);
+        label.setHorizontalTextPosition(JLabel.CENTER);
+        PanelPost.setLayout(new BoxLayout(PanelPost, BoxLayout.Y_AXIS));
+        PanelPost.add(label);
+        PanelPost.revalidate(); 
+        PanelPost.repaint(); 
+    }//GEN-LAST:event_btnTwittActionPerformed
+
+    public void setlblNameUser(String usuario){
+        this.usuario=usuario;
+        lblNameUser.setText(usuario);
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel PanelBtn;
+    private javax.swing.JPanel PanelPost;
+    private javax.swing.JPanel PanelSearch;
+    private javax.swing.JPanel PanelType;
     private javax.swing.JTextArea areaTweet;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnHashtags;
@@ -192,11 +306,10 @@ public class Navegacion extends javax.swing.JFrame {
     private javax.swing.JButton btnProfile;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnTwitt;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblNameUser;
     private javax.swing.JComboBox<String> listaUsers;
     private javax.swing.JTextField txtBusqueda;
     // End of variables declaration//GEN-END:variables

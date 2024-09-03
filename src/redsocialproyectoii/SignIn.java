@@ -6,6 +6,7 @@ package redsocialproyectoii;
 
 import java.util.Calendar;
 import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
 
 public class SignIn extends javax.swing.JFrame {
     //Inicio es el que contiene el arreglo
@@ -14,6 +15,7 @@ public class SignIn extends javax.swing.JFrame {
     public SignIn(Inicio InstanciaPorParametro) {
         initComponents();
         this.InstanciaMain=InstanciaPorParametro;
+        
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -59,6 +61,15 @@ public class SignIn extends javax.swing.JFrame {
         });
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino", " " }));
+
+        JSpinner.DefaultEditor editor = (JSpinner.DefaultEditor) edadSpin.getEditor();
+        editor.getTextField().setEditable(false);
+        edadSpin.setModel(new javax.swing.SpinnerNumberModel(18, 18, 99, 1));
+        edadSpin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                edadSpinKeyTyped(evt);
+            }
+        });
 
         jLabel3.setText("Edad:");
 
@@ -169,7 +180,7 @@ public class SignIn extends javax.swing.JFrame {
     
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
        
-       String name= txtNombre.getText();
+       String name= txtNombre.getText().toUpperCase();
        String user = txtName.getText();
        
        String password = txtPassword.getText();
@@ -181,14 +192,17 @@ public class SignIn extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No has llenado todas las casillas");
         } else {
             if (InstanciaMain.Usuarios.AgregarUsuario(name, user, password, genero, edad, fecha)) {
-                Inicio in = Inicio.getInstance();
-                in.setVisible(true);
+                JOptionPane.showMessageDialog(null, "SE HA REGISTRADO CORRECTAMENTE");
                 this.dispose();
+                Inicio in = Inicio.getInstance();
+                Navegacion nav = Navegacion.getInstancia();
+                nav.setlblNameUser("@"+txtName.getText());
+                in.setVisible(true);
+                in.setLocationRelativeTo(null);
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario no valido!", "Error", HEIGHT);
             }
         }
-//        InstanciaMain.Usuarios.Print();
         
     }//GEN-LAST:event_registerBtnActionPerformed
 
@@ -205,6 +219,10 @@ public class SignIn extends javax.swing.JFrame {
         
         lblDate.setText(dia+"/"+mes+"/"+anio);
     }//GEN-LAST:event_btnDateActionPerformed
+
+    private void edadSpinKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edadSpinKeyTyped
+
+    }//GEN-LAST:event_edadSpinKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDate;

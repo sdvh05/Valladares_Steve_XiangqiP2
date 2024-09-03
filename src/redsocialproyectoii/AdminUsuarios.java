@@ -1,8 +1,10 @@
 package redsocialproyectoii;
 
+import javax.swing.ImageIcon;
+
 public class AdminUsuarios {
 
-    private Usuario[] Admin;
+    public Usuario[] Admin;
 
     public AdminUsuarios() {
         Admin = new Usuario[100];
@@ -10,7 +12,7 @@ public class AdminUsuarios {
     
     public Usuario BuscarUsuario(String user) {
         for (Usuario search : Admin) {
-            if (search!=null && search.getUser().equals(user)) {
+            if (search!=null && search.toString().equals(user)) {
                 return search;
             }
         }
@@ -22,24 +24,18 @@ public class AdminUsuarios {
             for (int i = 0; i < Admin.length; i++) {
                 if (Admin[i] == null) {
                     Admin[i] = new Usuario(name, user, password,genero,edad, fecha);
+                    if(genero.equals("Masculino")){
+                        ImageIcon profile = new ImageIcon("pfp-man.jpg");
+                        profile.setImage(profile.getImage());
+                    }else{
+                        ImageIcon profile = new ImageIcon("pfp-woman.jpg");
+                        profile.setImage(profile.getImage());
+                    }
                     return true;
                 }
             }
         }
         return false;
     }
-//    public Usuario verLongitud(String user){
-//        for(int posicion=0;posicion<arreglo.Admin.length;posicion++){
-//            for(int i=0;i<Admin[posicion].toString().length()-1;i++){
-//                if (Admin[i].toString().charAt(i) == tuRespuesta) {
-//                    letras[i] = tuRespuesta;  
-//                    verificacion = true;
-//                    System.out.println("Adivinaste!");
-//                }
-//            }
-//            if(Admin[posicion]==null){
-//                break;
-//            }
-//        }
-//    }
+            
 }
