@@ -193,14 +193,14 @@ public class Inicio extends javax.swing.JFrame {
         String password=txtPass.getText();
         
         if(txtUser.getText().isEmpty()||txtPass.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Cuidado con las casillas");
+            JOptionPane.showMessageDialog(null, "Porfavor Rellene Todas las Casillas con informacion");
         }else{
                 if (Usuarios.BuscarUsuario(user)!=null) {
                     Navegacion nav = Navegacion.getInstancia();
                     nav.setVisible(true);
                     this.dispose();
                 } else {
-                    JOptionPane.showMessageDialog(null, "No hay");
+                    JOptionPane.showMessageDialog(null, "No existe un Usuario con estos datos"+"\nPorfavor Verifique la Informacion o cree una cuenta");
                 }
         }
     }//GEN-LAST:event_logBtnActionPerformed

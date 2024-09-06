@@ -219,7 +219,7 @@ public class SignIn extends javax.swing.JFrame {
        String fecha = lblDate.getText();
        
         if (name.isEmpty() || user.isEmpty() || password.isEmpty() || fecha.equals("DD/MM/YY")) {
-            JOptionPane.showMessageDialog(null, "No has llenado todas las casillas");
+            JOptionPane.showMessageDialog(null, "Porfavor rellenar todas las Casillas");
         } else {
             //variable booleana, ya que retorna true/false
             boolean agregar = InstanciaMain.Usuarios.AgregarUsuario(name, user, password, genero, edad, fecha);
