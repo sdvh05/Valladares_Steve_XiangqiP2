@@ -4,23 +4,23 @@
  */
 package redsocialproyectoii;
 
+import java.awt.Dimension;
+import java.util.Calendar;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 public class Navegacion extends javax.swing.JFrame {
     private String usuario;
     //variable para reutillizar instancia
     private static Navegacion instanciaUnica;
-    
-    Inicio in;
-    
-    Tweets []twittear;
-    //arreglo para JTexfield para desplazar lista luego
+    AgregarTweet comment;
     AdminUsuarios busquedaLista = new AdminUsuarios();
     private Navegacion() {
-        twittear = new Tweets[100];
         initComponents();
+        comment = new AgregarTweet();
         busquedaLista.AgregarUsuario("Samuel", "samuel_lara", "feo", "Masculino", 18, "01-01-1999");
         busquedaLista.AgregarUsuario("Alice", "alice123", "password", "Femenino", 25, "01-01-1999");
     }
@@ -50,7 +50,6 @@ public class Navegacion extends javax.swing.JFrame {
         areaTweet = new javax.swing.JTextArea();
         btnTwitt = new javax.swing.JButton();
         lblNameUser = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         PanelBtn = new javax.swing.JPanel();
         btnInteract = new javax.swing.JButton();
         btnHashtags = new javax.swing.JButton();
@@ -87,8 +86,6 @@ public class Navegacion extends javax.swing.JFrame {
 
         lblNameUser.setText("jLabel1");
 
-        jLabel1.setText("jLabel1");
-
         javax.swing.GroupLayout PanelTypeLayout = new javax.swing.GroupLayout(PanelType);
         PanelType.setLayout(PanelTypeLayout);
         PanelTypeLayout.setHorizontalGroup(
@@ -97,8 +94,7 @@ public class Navegacion extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(PanelTypeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelTypeLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnTwitt))
                     .addGroup(PanelTypeLayout.createSequentialGroup()
                         .addComponent(lblNameUser)
@@ -112,13 +108,8 @@ public class Navegacion extends javax.swing.JFrame {
                 .addComponent(lblNameUser)
                 .addGap(3, 3, 3)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(PanelTypeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelTypeLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(btnTwitt))
-                    .addGroup(PanelTypeLayout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel1)))
+                .addGap(18, 18, 18)
+                .addComponent(btnTwitt)
                 .addContainerGap())
         );
 
@@ -216,7 +207,7 @@ public class Navegacion extends javax.swing.JFrame {
         );
         PanelPostLayout.setVerticalGroup(
             PanelPostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 324, Short.MAX_VALUE)
         );
 
         setJMenuBar(jMenuBar1);
@@ -272,20 +263,48 @@ public class Navegacion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        Inicio volver = new Inicio();
+        Inicio volver = Inicio.getInstance();
         volver.setVisible(true);
         volver.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnTwittActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTwittActionPerformed
-        String tweet = areaTweet.getText();
-        JLabel label = new JLabel(tweet);
-        label.setHorizontalTextPosition(JLabel.CENTER);
-        PanelPost.setLayout(new BoxLayout(PanelPost, BoxLayout.Y_AXIS));
-        PanelPost.add(label);
-        PanelPost.revalidate(); 
-        PanelPost.repaint(); 
+        Calendar cal= Calendar.getInstance();
+        int dia=cal.get(Calendar.DATE);
+        int mes= cal.get(Calendar.MONTH)+1;
+        int anio= cal.get(Calendar.YEAR);
+        String usr=lblNameUser.getText();
+        String tweet = areaTweet.getText().trim();
+        String fecha = dia+"/"+mes+"/"+anio;
+        if(!tweet.isEmpty()){
+            if(comment.buscarTweets(tweet)==null){
+                //variable booleana, ya que retorna true/false
+                boolean agregado = comment.agregarTweet(usuario, tweet, fecha);
+                if (agregado) {
+                     JTextArea tweetArea = new JTextArea("Usuario: " + usuario + "\n" +
+                                                    "Publicación: " + tweet + "\n" +
+                                                    "Fecha: " + fecha);
+                    tweetArea.setLineWrap(true);
+                    tweetArea.setWrapStyleWord(true); 
+                    tweetArea.setEditable(false); 
+                    JScrollPane scrollPane = new JScrollPane(tweetArea);
+                    scrollPane.setPreferredSize(new Dimension(300, 60));
+                    tweetArea.setPreferredSize(new Dimension(300, 60));
+                    PanelPost.setLayout(new BoxLayout(PanelPost, BoxLayout.Y_AXIS));
+                    PanelPost.add(scrollPane);
+                    PanelPost.revalidate(); 
+                    PanelPost.repaint();
+                    areaTweet.setText("");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Error al agregar el tweet.");
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Este tweet ya existe");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "No has escrito nada!");
+        }
     }//GEN-LAST:event_btnTwittActionPerformed
 
     public void setlblNameUser(String usuario){
@@ -306,7 +325,6 @@ public class Navegacion extends javax.swing.JFrame {
     private javax.swing.JButton btnProfile;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnTwitt;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblNameUser;

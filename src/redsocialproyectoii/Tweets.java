@@ -1,10 +1,22 @@
 package redsocialproyectoii;
 
 public class Tweets {
+    private String usuario;
     private String texto;
+    private String fecha;
     
-    public Tweets(String text){
+    public Tweets(){
+    
+    }
+    
+    public Tweets(String usuario, String text, String fecha){
+        this.usuario=usuario;
         this.texto=text;
+        this.fecha=fecha;
+    }
+    
+    public String getUsuario(){
+        return usuario;
     }
     
     public String getText(){
@@ -15,4 +27,11 @@ public class Tweets {
         this.texto = texto;
     }
     
+    public void setFecha(String fecha){
+        this.fecha=fecha;
+    }
+    
+    public String getFecha(){
+        return fecha;
+    }
 }

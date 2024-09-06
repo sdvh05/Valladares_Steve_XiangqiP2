@@ -15,7 +15,6 @@ public class SignIn extends javax.swing.JFrame {
     public SignIn(Inicio InstanciaPorParametro) {
         initComponents();
         this.InstanciaMain=InstanciaPorParametro;
-        
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -191,14 +190,15 @@ public class SignIn extends javax.swing.JFrame {
         if (name.isEmpty() || user.isEmpty() || password.isEmpty() || fecha.equals("DD/MM/YY")) {
             JOptionPane.showMessageDialog(null, "No has llenado todas las casillas");
         } else {
-            if (InstanciaMain.Usuarios.AgregarUsuario(name, user, password, genero, edad, fecha)) {
+            //variable booleana, ya que retorna true/false
+            boolean agregar = InstanciaMain.Usuarios.AgregarUsuario(name, user, password, genero, edad, fecha);
+            if (agregar){
                 JOptionPane.showMessageDialog(null, "SE HA REGISTRADO CORRECTAMENTE");
                 this.dispose();
-                Inicio in = Inicio.getInstance();
                 Navegacion nav = Navegacion.getInstancia();
                 nav.setlblNameUser("@"+txtName.getText());
-                in.setVisible(true);
-                in.setLocationRelativeTo(null);
+                nav.setVisible(true);
+                nav.setLocationRelativeTo(null);
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario no valido!", "Error", HEIGHT);
             }

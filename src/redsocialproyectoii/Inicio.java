@@ -175,7 +175,7 @@ public class Inicio extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Inicio in = Inicio.getInstance();
+                Inicio in = new Inicio();
                 in.setVisible(true);
                 in.setLocationRelativeTo(null);
             }
