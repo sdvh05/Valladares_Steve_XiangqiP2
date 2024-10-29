@@ -185,9 +185,9 @@ public class MiCuenta extends javax.swing.JFrame {
 
     private void BtnEliminarAccMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnEliminarAccMouseClicked
         // TODO add your handling code here:
-            int confirmar = JOptionPane.showConfirmDialog(null,"¿Esta Seguro que desea Elimiar la cuenta? \nUna vez Eliminada no podra Recuerarla", "Atencion", JOptionPane.OK_CANCEL_OPTION);
+            int confirmar = JOptionPane.showConfirmDialog(null,"¿Esta Seguro que desea Elimiar la cuenta? \nUna vez Eliminada no podra Recuperarla", "Atencion", JOptionPane.OK_CANCEL_OPTION);
             if (confirmar==0) {
-                //AÑADIR LA FUNCION ELIMINAR ACC
+                 mas.eliminarUsuario(mas.UsuarioActual.getUser());
                  new Inicio(mas).setVisible(true);
                  setLocationRelativeTo(null);
                  this.dispose();
