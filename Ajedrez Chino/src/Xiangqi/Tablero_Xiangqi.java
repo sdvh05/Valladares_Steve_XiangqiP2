@@ -1320,20 +1320,25 @@ public Master mas;
     private void E1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_E1ActionPerformed
         // TODO add your handling code here:
         int X=4;
-        int Y=1;
-        
+        int Y=0;
         if (primerClick) {
-            boolean SePuede=moverPieza(xInicial,yInicial,X,Y);
+            boolean SePuede = moverPieza(xInicial, yInicial, X, Y);
             if (SePuede) {
                 E1.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
             }
-            primerClick=false;
+            primerClick = false;
         } else {
-            Boton1=E1;
-            xInicial=X;
-            yInicial=Y;
-            primerClick = true;
+            if (tablero[Y][X] != null) {
+                Boton1 = E1;
+                xInicial = X;
+                yInicial = Y;
+                primerClick = true;
+                VerificarRey();            
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
+            }
         }
     }//GEN-LAST:event_E1ActionPerformed
 
@@ -1367,7 +1372,7 @@ public Master mas;
         int X = 0;
         int Y = 0;
 
-                if (primerClick) {
+        if (primerClick) {
             boolean SePuede = moverPieza(xInicial, yInicial, X, Y);
             if (SePuede) {
                 A1.setIcon(Boton1.getIcon());
@@ -1380,6 +1385,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -1404,6 +1410,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -1427,6 +1434,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -1450,6 +1458,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -1473,6 +1482,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -1496,6 +1506,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -1519,6 +1530,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -1542,6 +1554,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -1565,6 +1578,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -1588,6 +1602,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -1611,6 +1626,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -1636,6 +1652,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -1659,6 +1676,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -1682,6 +1700,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -1705,6 +1724,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -1728,6 +1748,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -1751,6 +1772,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -1774,6 +1796,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -1797,6 +1820,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -1820,6 +1844,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -1843,6 +1868,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -1866,6 +1892,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -1889,6 +1916,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -1912,6 +1940,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -1935,6 +1964,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -1958,6 +1988,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -1981,6 +2012,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2004,6 +2036,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2027,6 +2060,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2050,6 +2084,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2073,6 +2108,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2096,6 +2132,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2119,6 +2156,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2142,6 +2180,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2165,6 +2204,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2188,6 +2228,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2211,6 +2252,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2234,6 +2276,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2257,6 +2300,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2280,6 +2324,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2303,6 +2348,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2326,6 +2372,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2349,6 +2396,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2372,6 +2420,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2395,6 +2444,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2418,6 +2468,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2441,6 +2492,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2464,6 +2516,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2487,6 +2540,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2510,6 +2564,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2533,6 +2588,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2556,6 +2612,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2579,6 +2636,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2602,6 +2660,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2625,6 +2684,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2648,6 +2708,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2671,6 +2732,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2694,6 +2756,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2717,6 +2780,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2740,6 +2804,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2763,6 +2828,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2786,6 +2852,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2809,6 +2876,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2832,6 +2900,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2855,6 +2924,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2878,6 +2948,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2901,6 +2972,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2924,6 +2996,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2947,6 +3020,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2970,6 +3044,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2993,6 +3068,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3016,6 +3092,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3039,6 +3116,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3062,6 +3140,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3085,6 +3164,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3108,6 +3188,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3131,6 +3212,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3154,6 +3236,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3177,6 +3260,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3200,6 +3284,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3223,6 +3308,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3246,6 +3332,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3269,6 +3356,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3292,6 +3380,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3315,6 +3404,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3338,6 +3428,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3361,6 +3452,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3384,6 +3476,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3407,6 +3500,7 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
+                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3418,39 +3512,37 @@ public Master mas;
         if (lblTurno.getText().equals("Rojo")) {
             lblTurno.setText("Negro");
             lblTurno.setForeground(Color.BLACK);
-            VerificarRey();
         } else{
            lblTurno.setText("Rojo"); 
            lblTurno.setForeground(Color.RED);
-           VerificarRey();
         }
     }
     
 
     
 public void VerificarRey() {
-    Icon reyRojo = E1.getIcon();
-    Icon reyNegro = E10.getIcon();
+    boolean reyRojoPresente = false;
+    boolean reyNegroPresente = false;
 
-    JButton[] posicionesReyRojo = {D1, D2, D3, E1, E2, E3, F1, F2, F3}; 
-    JButton[] posicionesReyNegro = {D10, D9, D8, E10, E9, E8, F10, F9, F8};
- 
-    if (!existeRey(posicionesReyRojo, reyRojo)) {
-        VictoriaNegra();  
-    }
-    else if (!existeRey(posicionesReyNegro, reyNegro)) {
-        VictoriaRoja();
-    }
-}
+    for (int y = 0; y < tablero.length; y++) {
+        for (int x = 0; x < tablero[y].length; x++) {
+            Piezas pieza = tablero[y][x];
 
-private boolean existeRey(JButton[] posiciones, Icon reyIcon) {
-    for (JButton posicion : posiciones) {
-        if (posicion.getIcon() != null && posicion.getIcon().equals(reyIcon)) {
-            return true; 
+            if (pieza instanceof Rey && pieza.Color() == true) { 
+                reyRojoPresente = true;
+            }
+
+            if (pieza instanceof Rey && pieza.Color() == false) { 
+                reyNegroPresente = true;
+            }
         }
     }
-    
-    return false; 
+
+    if (!reyRojoPresente) {
+        VictoriaNegra();
+    } else if (!reyNegroPresente) {
+        VictoriaRoja();
+    }
 }
     
     
@@ -3524,7 +3616,6 @@ private boolean existeRey(JButton[] posiciones, Icon reyIcon) {
             tablero[yInicial][xInicial] = null;
             pieza.xPos = xFinal;
             pieza.yPos = yFinal;
-            VerificarRey();
             Cambiarlbl();
             return true;
         } else {
