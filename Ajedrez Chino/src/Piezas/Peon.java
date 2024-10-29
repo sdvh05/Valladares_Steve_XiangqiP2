@@ -18,7 +18,7 @@ public class Peon extends Piezas {
     @Override
     public boolean mover(int xPos, int yPos,int X, int Y) {
         if (isRed) { //Roja
-            if (Y >= 6) { //campo aliado
+            if (Y <= 4) { //campo aliado
                 if (Y > yPos && X == xPos && Y == (yPos + 1)) {
                     return true;
                 }
@@ -31,7 +31,7 @@ public class Peon extends Piezas {
             }
 
         } else { //Negra
-            if (Y <= 5) { //campo aliado
+            if (Y >= 5) { //campo aliado
                 if (Y < yPos && X == xPos && Y == (yPos - 1)) {
                     return true;
                 }

@@ -31,6 +31,8 @@ public Master mas;
     private JButton Boton1;
     private int xInicial, yInicial;
     private Piezas[][] tablero = new Piezas[10][9];
+    private StringBuilder piezasCapturadasRojas;
+    private StringBuilder piezasCapturadasNegras;
 
     public Tablero_Xiangqi(Master mast) {
         initComponents();
@@ -44,6 +46,9 @@ public Master mas;
        lblTurno.setText("Rojo");
        lblTurno.setForeground(Color.RED);
        mas.UsuarioActual.Jugar(); mas.UsuarioRival.Jugar();
+       this.piezasCapturadasRojas = new StringBuilder();
+       this.piezasCapturadasNegras = new StringBuilder();
+       
        
        
        
@@ -155,7 +160,12 @@ public Master mas;
         BtnRendirse = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         lblTurno = new javax.swing.JLabel();
-        pruebalbl = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        AreaCapturasRojo = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        AreaCapturasNegro = new javax.swing.JTextArea();
+        CJR = new javax.swing.JLabel();
+        CJN1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -1249,56 +1259,81 @@ public Master mas;
         lblTurno.setText("COLOR ");
         lblTurno.setOpaque(true);
 
-        pruebalbl.setText("prueba");
-        pruebalbl.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pruebalblActionPerformed(evt);
-            }
-        });
+        AreaCapturasRojo.setEditable(false);
+        AreaCapturasRojo.setBackground(new java.awt.Color(51, 51, 51));
+        AreaCapturasRojo.setColumns(20);
+        AreaCapturasRojo.setForeground(new java.awt.Color(204, 204, 204));
+        AreaCapturasRojo.setRows(5);
+        AreaCapturasRojo.setFocusable(false);
+        jScrollPane1.setViewportView(AreaCapturasRojo);
+
+        AreaCapturasNegro.setEditable(false);
+        AreaCapturasNegro.setBackground(new java.awt.Color(51, 51, 51));
+        AreaCapturasNegro.setColumns(20);
+        AreaCapturasNegro.setForeground(new java.awt.Color(204, 204, 204));
+        AreaCapturasNegro.setRows(5);
+        AreaCapturasNegro.setFocusable(false);
+        jScrollPane2.setViewportView(AreaCapturasNegro);
+
+        CJR.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        CJR.setForeground(new java.awt.Color(153, 0, 0));
+        CJR.setText("Capturas Jugador Rojo");
+
+        CJN1.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        CJN1.setForeground(new java.awt.Color(0, 0, 0));
+        CJN1.setText("Capturas Jugador Negro");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(145, 145, 145)
+                .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(JugadorRojo, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(JugadorNegro, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(BtnRendirse, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
-                                .addComponent(lblTurno, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(pruebalbl))
-                        .addGap(24, 24, 24))))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CJR)
+                    .addComponent(CJN1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(JugadorRojo, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JugadorNegro, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(BtnRendirse, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                    .addComponent(lblTurno, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(JugadorNegro, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(9, 9, 9)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(BtnRendirse, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(pruebalbl)))
+                        .addComponent(lblTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(JugadorNegro, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(104, 104, 104)
+                        .addComponent(CJN1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(CJR)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(62, 62, 62)))
                 .addGap(18, 18, 18)
                 .addComponent(JugadorRojo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18))
+                .addGap(21, 21, 21))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1362,11 +1397,6 @@ public Master mas;
         
     }//GEN-LAST:event_BtnRendirseMouseClicked
 
-    private void pruebalblActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pruebalblActionPerformed
-        // TODO add your handling code here:
-         Cambiarlbl();
-    }//GEN-LAST:event_pruebalblActionPerformed
-
     private void A1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A1ActionPerformed
         // TODO add your handling code here:
         int X = 0;
@@ -1377,6 +1407,7 @@ public Master mas;
             if (SePuede) {
                 A1.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -1402,6 +1433,7 @@ public Master mas;
             if (SePuede) {
                 A2.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -1426,6 +1458,7 @@ public Master mas;
             if (SePuede) {
                 A3.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -1450,6 +1483,7 @@ public Master mas;
             if (SePuede) {
                 A4.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -1474,6 +1508,7 @@ public Master mas;
             if (SePuede) {
                 A5.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -1498,6 +1533,7 @@ public Master mas;
             if (SePuede) {
                 A6.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -1522,6 +1558,7 @@ public Master mas;
             if (SePuede) {
                 A7.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -1546,6 +1583,7 @@ public Master mas;
             if (SePuede) {
                 A8.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick=false;
         } else {
@@ -1570,6 +1608,7 @@ public Master mas;
             if (SePuede) {
                 A9.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -1594,6 +1633,7 @@ public Master mas;
             if (SePuede) {
                 A10.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -1618,6 +1658,7 @@ public Master mas;
             if (SePuede) {
                 B1.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -1644,6 +1685,7 @@ public Master mas;
             if (SePuede) {
                 B2.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick=false;
         } else {
@@ -1668,6 +1710,7 @@ public Master mas;
             if (SePuede) {
                 B3.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -1692,6 +1735,7 @@ public Master mas;
             if (SePuede) {
                 B4.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -1716,6 +1760,7 @@ public Master mas;
             if (SePuede) {
                 B5.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -1740,6 +1785,7 @@ public Master mas;
             if (SePuede) {
                 B6.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -1764,6 +1810,7 @@ public Master mas;
             if (SePuede) {
                 B7.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -1788,6 +1835,7 @@ public Master mas;
             if (SePuede) {
                 B8.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -1812,6 +1860,7 @@ public Master mas;
             if (SePuede) {
                 B9.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -1836,6 +1885,7 @@ public Master mas;
             if (SePuede) {
                 B10.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -1860,6 +1910,7 @@ public Master mas;
             if (SePuede) {
                 C1.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -1884,6 +1935,7 @@ public Master mas;
             if (SePuede) {
                 C2.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -1908,6 +1960,7 @@ public Master mas;
             if (SePuede) {
                 C3.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -1932,6 +1985,7 @@ public Master mas;
             if (SePuede) {
                 C4.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -1956,6 +2010,7 @@ public Master mas;
             if (SePuede) {
                 C5.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -1980,6 +2035,7 @@ public Master mas;
             if (SePuede) {
                 C6.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2004,6 +2060,7 @@ public Master mas;
             if (SePuede) {
                 C7.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2028,6 +2085,7 @@ public Master mas;
             if (SePuede) {
                 C8.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2052,6 +2110,7 @@ public Master mas;
             if (SePuede) {
                 C9.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2076,6 +2135,7 @@ public Master mas;
             if (SePuede) {
                 C10.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2100,6 +2160,7 @@ public Master mas;
             if (SePuede) {
                 D1.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2124,6 +2185,7 @@ public Master mas;
             if (SePuede) {
                 D2.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2148,6 +2210,7 @@ public Master mas;
             if (SePuede) {
                 D3.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2172,6 +2235,7 @@ public Master mas;
             if (SePuede) {
                 D4.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2196,6 +2260,7 @@ public Master mas;
             if (SePuede) {
                 D5.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2220,6 +2285,7 @@ public Master mas;
             if (SePuede) {
                 D6.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2244,6 +2310,7 @@ public Master mas;
             if (SePuede) {
                 D7.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2268,6 +2335,7 @@ public Master mas;
             if (SePuede) {
                 D8.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2292,6 +2360,7 @@ public Master mas;
             if (SePuede) {
                 D9.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2316,6 +2385,7 @@ public Master mas;
             if (SePuede) {
                 D10.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2340,6 +2410,7 @@ public Master mas;
             if (SePuede) {
                 E2.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2364,6 +2435,7 @@ public Master mas;
             if (SePuede) {
                 E3.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2388,6 +2460,7 @@ public Master mas;
             if (SePuede) {
                 E4.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2412,6 +2485,7 @@ public Master mas;
             if (SePuede) {
                 E5.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2436,6 +2510,7 @@ public Master mas;
             if (SePuede) {
                 E6.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2460,6 +2535,7 @@ public Master mas;
             if (SePuede) {
                 E7.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2484,6 +2560,7 @@ public Master mas;
             if (SePuede) {
                 E8.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2508,6 +2585,7 @@ public Master mas;
             if (SePuede) {
                 E9.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2532,6 +2610,7 @@ public Master mas;
             if (SePuede) {
                 E10.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2556,6 +2635,7 @@ public Master mas;
             if (SePuede) {
                 F1.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2580,6 +2660,7 @@ public Master mas;
             if (SePuede) {
                 F2.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2604,6 +2685,7 @@ public Master mas;
             if (SePuede) {
                 F3.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2628,6 +2710,7 @@ public Master mas;
             if (SePuede) {
                 F4.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2652,6 +2735,7 @@ public Master mas;
             if (SePuede) {
                 F5.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2676,6 +2760,7 @@ public Master mas;
             if (SePuede) {
                 F6.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2700,6 +2785,7 @@ public Master mas;
             if (SePuede) {
                 F7.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2724,6 +2810,7 @@ public Master mas;
             if (SePuede) {
                 F8.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2748,6 +2835,7 @@ public Master mas;
             if (SePuede) {
                 F9.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2772,6 +2860,7 @@ public Master mas;
             if (SePuede) {
                 F10.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2796,6 +2885,7 @@ public Master mas;
             if (SePuede) {
                 G1.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2820,6 +2910,7 @@ public Master mas;
             if (SePuede) {
                 G2.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2844,6 +2935,7 @@ public Master mas;
             if (SePuede) {
                 G3.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2868,6 +2960,7 @@ public Master mas;
             if (SePuede) {
                 G4.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2892,6 +2985,7 @@ public Master mas;
             if (SePuede) {
                 G5.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2916,6 +3010,7 @@ public Master mas;
             if (SePuede) {
                 G6.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2940,6 +3035,7 @@ public Master mas;
             if (SePuede) {
                 G7.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2948,7 +3044,6 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
-                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2964,6 +3059,7 @@ public Master mas;
             if (SePuede) {
                 G8.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2972,7 +3068,6 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
-                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -2988,6 +3083,7 @@ public Master mas;
             if (SePuede) {
                 G9.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -2996,7 +3092,6 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
-                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3012,6 +3107,7 @@ public Master mas;
             if (SePuede) {
                 G10.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -3020,7 +3116,6 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
-                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3036,6 +3131,7 @@ public Master mas;
             if (SePuede) {
                 H1.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -3044,7 +3140,6 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
-                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3060,6 +3155,7 @@ public Master mas;
             if (SePuede) {
                 H2.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -3068,7 +3164,6 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
-                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3084,6 +3179,7 @@ public Master mas;
             if (SePuede) {
                 H3.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -3092,7 +3188,6 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
-                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3108,6 +3203,7 @@ public Master mas;
             if (SePuede) {
                 H4.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -3116,7 +3212,6 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
-                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3132,6 +3227,7 @@ public Master mas;
             if (SePuede) {
                 H5.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -3140,7 +3236,6 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
-                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3156,6 +3251,7 @@ public Master mas;
             if (SePuede) {
                 H6.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -3164,7 +3260,6 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
-                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3180,6 +3275,7 @@ public Master mas;
             if (SePuede) {
                 H7.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -3188,7 +3284,6 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
-                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3204,6 +3299,7 @@ public Master mas;
             if (SePuede) {
                 H8.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -3212,7 +3308,6 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
-                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3228,6 +3323,7 @@ public Master mas;
             if (SePuede) {
                 H9.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -3236,7 +3332,6 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
-                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3252,6 +3347,7 @@ public Master mas;
             if (SePuede) {
                 H10.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -3260,7 +3356,6 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
-                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3276,6 +3371,7 @@ public Master mas;
             if (SePuede) {
                 I1.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -3284,7 +3380,6 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
-                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3300,6 +3395,7 @@ public Master mas;
             if (SePuede) {
                 I2.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -3308,7 +3404,6 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
-                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3324,6 +3419,7 @@ public Master mas;
             if (SePuede) {
                 I3.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -3332,7 +3428,6 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
-                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3348,6 +3443,7 @@ public Master mas;
             if (SePuede) {
                 I4.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -3356,7 +3452,6 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
-                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3372,6 +3467,7 @@ public Master mas;
             if (SePuede) {
                 I5.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey(); 
             }
             primerClick = false;
         } else {
@@ -3380,7 +3476,6 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
-                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3396,6 +3491,7 @@ public Master mas;
             if (SePuede) {
                 I6.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -3404,7 +3500,6 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
-                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3420,6 +3515,7 @@ public Master mas;
             if (SePuede) {
                 I7.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -3428,7 +3524,6 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
-                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3444,6 +3539,7 @@ public Master mas;
             if (SePuede) {
                 I8.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -3452,7 +3548,6 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
-                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3468,6 +3563,7 @@ public Master mas;
             if (SePuede) {
                 I9.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -3476,7 +3572,6 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
-                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3492,6 +3587,7 @@ public Master mas;
             if (SePuede) {
                 I10.setIcon(Boton1.getIcon());
                 Boton1.setIcon(null);
+                VerificarRey();
             }
             primerClick = false;
         } else {
@@ -3500,7 +3596,6 @@ public Master mas;
                 xInicial = X;
                 yInicial = Y;
                 primerClick = true;
-                VerificarRey();
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una posición con una pieza.");
             }
@@ -3516,34 +3611,40 @@ public Master mas;
            lblTurno.setText("Rojo"); 
            lblTurno.setForeground(Color.RED);
         }
+        String CR= getCapturasRojas();
+        String CN= getCapturasNegras();
+        AreaCapturasRojo.setText(null);
+        AreaCapturasRojo.setText(null);
+        AreaCapturasRojo.setText(CN);
+        AreaCapturasNegro.setText(CR);
     }
     
 
     
-public void VerificarRey() {
-    boolean reyRojoPresente = false;
-    boolean reyNegroPresente = false;
+    public void VerificarRey() {
+        boolean reyRojoPresente = false;
+        boolean reyNegroPresente = false;
 
-    for (int y = 0; y < tablero.length; y++) {
-        for (int x = 0; x < tablero[y].length; x++) {
-            Piezas pieza = tablero[y][x];
+        for (int y = 0; y < tablero.length; y++) {
+            for (int x = 0; x < tablero[y].length; x++) {
+                Piezas pieza = tablero[y][x];
 
-            if (pieza instanceof Rey && pieza.Color() == true) { 
-                reyRojoPresente = true;
-            }
+                if (pieza instanceof Rey && pieza.Color() == true) {
+                    reyRojoPresente = true;
+                }
 
-            if (pieza instanceof Rey && pieza.Color() == false) { 
-                reyNegroPresente = true;
+                if (pieza instanceof Rey && pieza.Color() == false) {
+                    reyNegroPresente = true;
+                }
             }
         }
-    }
 
-    if (!reyRojoPresente) {
-        VictoriaNegra();
-    } else if (!reyNegroPresente) {
-        VictoriaRoja();
+        if (!reyRojoPresente) {
+            VictoriaNegra();
+        } else if (!reyNegroPresente) {
+            VictoriaRoja();
+        }
     }
-}
     
     
     
@@ -3611,7 +3712,15 @@ public void VerificarRey() {
             return false;
         }
 
-        if (pieza.mover(xInicial,yInicial,xFinal, yFinal)) {
+        if (pieza.mover(xInicial, yInicial, xFinal, yFinal)) {
+            if (destino != null) { 
+                StringBuilder capturaActual = destino.Color() ? piezasCapturadasRojas : piezasCapturadasNegras;
+                capturaActual.append(destino.getClass().getSimpleName())
+                        .append(" ")
+                        .append(destino.Color() ? "Rojo" : "Negro")
+                        .append("\n"); 
+            }
+
             tablero[yFinal][xFinal] = pieza;
             tablero[yInicial][xInicial] = null;
             pieza.xPos = xFinal;
@@ -3632,7 +3741,6 @@ public void VerificarRey() {
         setLocationRelativeTo(null);
         this.dispose();
     }
-
     public void VictoriaNegra() {
         JOptionPane.showMessageDialog(null, "Victoria de " + mas.UsuarioRival.getUser() + "\n Has ganado 3 Puntos");
         mas.UsuarioRival.Victoria();
@@ -3641,7 +3749,12 @@ public void VerificarRey() {
         setLocationRelativeTo(null);
         this.dispose();
     }
-    
+    public String getCapturasRojas() {
+        return piezasCapturadasRojas.toString();
+    }
+    public String getCapturasNegras() {
+        return piezasCapturadasNegras.toString();
+    }
     /**
      * @param args the command line arguments
      */
@@ -3684,6 +3797,8 @@ public void VerificarRey() {
     private javax.swing.JButton A7;
     private javax.swing.JButton A8;
     private javax.swing.JButton A9;
+    private javax.swing.JTextArea AreaCapturasNegro;
+    private javax.swing.JTextArea AreaCapturasRojo;
     private javax.swing.JButton B1;
     private javax.swing.JButton B10;
     private javax.swing.JButton B2;
@@ -3705,6 +3820,8 @@ public void VerificarRey() {
     private javax.swing.JButton C7;
     private javax.swing.JButton C8;
     private javax.swing.JButton C9;
+    private javax.swing.JLabel CJN1;
+    private javax.swing.JLabel CJR;
     private javax.swing.JButton D1;
     private javax.swing.JButton D10;
     private javax.swing.JButton D2;
@@ -3770,7 +3887,8 @@ public void VerificarRey() {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblTurno;
-    private javax.swing.JButton pruebalbl;
     // End of variables declaration//GEN-END:variables
 }
