@@ -52,6 +52,20 @@ public class Master implements LogPartidas {
      public void Logout(){
       this.UsuarioActual=null;
   }  
+    public void eliminarUsuario(String username) {
+        int posicion = -1;
+        for (int i = 0; i < NumUsers; i++) {
+            if (users[i].getUser().equals(username)) {
+                posicion = i;
+                break;
+            }
+        }
+        for (int i = posicion; i < NumUsers - 1; i++) {
+            users[i] = users[i + 1];
+        }
+        users[NumUsers - 1] = null;
+        NumUsers--;
+    }
            
      
 public String obtenerRanking() {

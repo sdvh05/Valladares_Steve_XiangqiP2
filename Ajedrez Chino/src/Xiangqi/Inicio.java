@@ -24,9 +24,6 @@ public class Inicio extends javax.swing.JFrame {
         this.setTitle("Steve Valladares 22341344");
         this.setLocationRelativeTo(null);
         mas=new Master();
-        mas.CrearCuenta("123", "12345");
-        mas.CrearCuenta("IonieZTIV", "12345");
-
     }
 
     /**
