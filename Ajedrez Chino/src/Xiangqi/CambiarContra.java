@@ -73,8 +73,6 @@ public class CambiarContra extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Contraseña Actual");
 
-        txtOldPass.setText("* * * * *");
-
         BtnCambiarContra.setText("Cambiar Contraseña");
         BtnCambiarContra.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -88,8 +86,6 @@ public class CambiarContra extends javax.swing.JFrame {
                 btnReturnMouseClicked(evt);
             }
         });
-
-        txtNewPass.setText("* * * * *");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Nueva Contraseña");

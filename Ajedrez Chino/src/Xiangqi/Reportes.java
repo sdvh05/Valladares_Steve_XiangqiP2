@@ -17,6 +17,7 @@ public class Reportes extends javax.swing.JFrame {
     public Reportes(Master mast) {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle("Reportes");
         mas=mast;
         
     }

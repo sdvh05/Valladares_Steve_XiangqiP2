@@ -107,6 +107,9 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="BtnMiCuenta">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="33" red="33" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Mi Cuenta"/>
           </Properties>
           <Events>
@@ -115,6 +118,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="BtnTablero">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="33" red="33" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Nueva Partida"/>
           </Properties>
           <Events>
@@ -123,6 +129,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="BtnLogout">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="33" red="33" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Logout"/>
           </Properties>
           <Events>
@@ -131,6 +140,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="BtnReportes">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="33" red="33" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Reportes"/>
           </Properties>
           <Events>

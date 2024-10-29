@@ -52,7 +52,7 @@ public class ElegirOP extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(153, 0, 0));
 
-        ElegirOp.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        ElegirOp.setFont(new java.awt.Font("Old English Text MT", 3, 24)); // NOI18N
         ElegirOp.setForeground(new java.awt.Color(0, 0, 0));
         ElegirOp.setText("Elegir Oponente");
 
@@ -62,6 +62,7 @@ public class ElegirOP extends javax.swing.JFrame {
             }
         });
 
+        btnSeleccionar.setForeground(new java.awt.Color(0, 0, 0));
         btnSeleccionar.setText("Seleccionar Oponente");
         btnSeleccionar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -80,17 +81,17 @@ public class ElegirOP extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(146, 146, 146)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BoxUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSeleccionar)
-                    .addComponent(ElegirOp))
-                .addContainerGap(151, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnReturn)
                 .addGap(19, 19, 19))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(146, 146, 146)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ElegirOp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BoxUsers, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSeleccionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

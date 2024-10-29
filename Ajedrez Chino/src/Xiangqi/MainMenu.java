@@ -38,6 +38,7 @@ public class MainMenu extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(153, 0, 0));
 
+        BtnMiCuenta.setBackground(new java.awt.Color(51, 51, 51));
         BtnMiCuenta.setText("Mi Cuenta");
         BtnMiCuenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -45,6 +46,7 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+        BtnTablero.setBackground(new java.awt.Color(51, 51, 51));
         BtnTablero.setText("Nueva Partida");
         BtnTablero.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -52,6 +54,7 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+        BtnLogout.setBackground(new java.awt.Color(51, 51, 51));
         BtnLogout.setText("Logout");
         BtnLogout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -59,6 +62,7 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+        BtnReportes.setBackground(new java.awt.Color(51, 51, 51));
         BtnReportes.setText("Reportes");
         BtnReportes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
